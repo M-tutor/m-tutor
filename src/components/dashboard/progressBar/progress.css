@@ -1,0 +1,27 @@
+.progress-bar-container {
+    width: 80vw;
+    height: 40px; /* Adjust as needed */
+    background-color: #E5E5E5; /* Gray background */
+    border-radius: 20px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    
+    /* Added styles for positioning */
+    position: absolute;
+    right: 4.5vw;
+    /* top: 0; */
+}
+
+.progress {
+    height: 100%;
+    background-color: #007BFF; /* Blue color, adjust as needed */
+    border-radius: 20px 0 0 20px; /* Only round the left corners */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.progress-text {
+    margin-left: 10px; /* Space between bar and text */
+    font-weight: bold;
+}

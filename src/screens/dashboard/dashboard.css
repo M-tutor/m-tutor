@@ -1,0 +1,35 @@
+body{
+    background: rgba(227, 233, 245, 1);
+    margin: 0;
+}
+.middle {
+    display: flex;
+    flex-direction: row; /* This is default and can be omitted */
+    justify-content: center;
+    align-items: center;
+    gap: 1vw; /* Adjust this value for your desired spacing */
+    margin-bottom: 20px;;    
+}
+
+.bottom {
+    display: flex;          /* Activates Flexbox */
+    justify-content: center; /* Centers children horizontally */
+    align-items: center;     /* Centers children vertically */
+}
+
+.navbar{
+    padding-inline: 4.5vw;
+    padding-block: 1.5vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    
+}
+
+.prog {
+    display: flex;
+    flex-direction: row; /* This makes the children align horizontally */
+    align-items: center; /* Vertically center align items */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

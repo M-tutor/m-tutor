@@ -1,0 +1,23 @@
+.left-rectangle {
+    width: 30vw;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);  /* equivalent to #FFF */
+}
+
+.right-rectangle {
+    width: 60vw;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);  /* This is equivalent to #FFF */
+}
+
+.bottom-rectangle{
+    width: 91vw;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);  /* This is equivalent to #FFF */
+}

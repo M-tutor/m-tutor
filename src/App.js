@@ -1,12 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Dashboard from './screens/dashboard/dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <h1>M-tutor Online self learning Platform
-      </h1>
-    </div>
+    <Dashboard/>
   );
 }
 
