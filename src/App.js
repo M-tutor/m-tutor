@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import LoggingScreen from "./screens/LoggingScreen";
 
 function App() {
   return (
     <div className="App">
-      <h1>M-tutor Online self learning Platform
-      </h1>
+      <LoggingScreen></LoggingScreen>
     </div>
   );
 }
