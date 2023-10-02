@@ -6,7 +6,7 @@ import { LoginForm } from "../components/LoginForm";
 function LoggingScreen(props) {
   return (
     <div className="flex">
-      <div className="bg-dark h-screen w-2/5 md:w-full">
+      <div className="bg-dark grow h-screen md:w-full">
         <div>
           <div className="flex items-center justify-center text-light">
             <MoraMaths className={"md:w-28 md:h-28"}></MoraMaths>
@@ -22,8 +22,8 @@ function LoggingScreen(props) {
       </div>
       <div>
         <img
-          src={require("../assets/Images/smiling-young-geometry-teacher.png")}
-          className="md:hidden"
+          src={require("../assets/Images/geomoetrical-cubes-paper 1.png")}
+          className="md:hidden h-screen w-auto"
         ></img>
       </div>
     </div>
