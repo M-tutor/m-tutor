@@ -1,6 +1,7 @@
 import React from "react";
 import CustomInput from "../components/CustomInput";
 import MoraMaths from "../assets/Icons/MoraMaths";
+import { LoginForm } from "../components/LoginForm";
 
 function LoggingScreen(props) {
   return (
@@ -16,6 +17,7 @@ function LoggingScreen(props) {
             </h2>
             <h2 className="text-light text-2xl ">Let's get started</h2>
           </div>
+          <LoginForm />
         </div>
       </div>
       <div>
