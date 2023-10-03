@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/navbar";
+// import Navbar from "../../components/navbar/navbar";
 import QuizSubject from "../../components/quizsubject/quizsubject";
 import "./quizpage.css";
 
@@ -55,9 +55,9 @@ function QuizPage() {
   };
   return (
     <>
-      <div className="navbar">
+      {/* <div className="navbar">
         <Navbar />
-      </div>
+      </div> */}
 
       <div className="container">
         <div className="h1">Quizzes</div>
