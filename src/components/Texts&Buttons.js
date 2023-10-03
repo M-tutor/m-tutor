@@ -10,7 +10,7 @@ import "./Texts&Buttons.css"
 function MainComponents() {
 
   const [userInputs, setInputs] = React.useState({
-    name:'',
+    name:'w',
     email:'',
     password:''
   })
