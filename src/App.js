@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./screens/dashboard";
 import logo from "./logo.svg";
 import Navbar from "./components/navbar/Navbar";
-import Quiz from "./screens/Quiz/quiz";
+import Quiz from "./screens/Quiz/quiz_test";
 import QuizPage from "./screens/QuizPage/quizpage";
 import LoggingScreen from "./screens/LoggingScreen";
 // import Quiz from "./screens/QuizPage/quizpage";
