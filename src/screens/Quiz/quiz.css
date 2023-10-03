@@ -1,0 +1,153 @@
+/* quiz.css */
+
+.quiz-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .upper-tab{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    
+  } 
+    h3{
+      font-size: 15px;
+      margin-top: 45px;
+      color: #39EBF7;
+      color: #39EBF7;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+  img {
+    width: 8%;
+    height: 8%;
+    object-fit: cover;
+  }
+
+  .question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #FFF;
+    border-radius: 30px;
+    height: auto;
+    padding: 0px 25px 0px 25px;
+    min-height: 100px;
+
+
+  }
+  
+  
+  .question-container p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .question-container img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+  
+  
+  .left-container {
+    background: #0F0E38;
+    flex: 1;
+    padding: 30px 50px 0px 50px;
+
+  }
+  
+  .left-container h2 {
+      font-size: 30px;
+      color: #FFF;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+  }
+  
+  .right-container {
+    flex: 1;
+    padding-left: 20px;
+    padding: 30px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .right-container h2 {
+    color: #0D279E;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  form {
+    display: grid;
+    grid-template-columns: auto; 
+    grid-row-gap: 10px; 
+  }
+  
+  .answer-label {
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight:600;
+    display: flex;
+    align-items: center;
+  }
+  
+  .answer-radio {
+      margin-right: 15px;
+      width: 24px; 
+      height: 24px; 
+      color: #1F6DD2; 
+      border-radius: 50%; 
+      cursor: pointer;
+      flex-shrink: 0;
+  }
+
+  .answer-img{
+    height: 20vh;
+    width: auto;
+    border-radius: 10px;
+  }
+  
+
+  .buttons-container{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 15px;
+  }
+
+  button {
+    background-color: #0D279E;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 25px;
+  }
+  
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+  

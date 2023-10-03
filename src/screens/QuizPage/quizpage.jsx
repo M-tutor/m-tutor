@@ -55,9 +55,9 @@ function QuizPage() {
   };
   return (
     <>
-      {/* <div className="navbar">
+      <div className="navbar">
         <Navbar />
-      </div> */}
+      </div>
 
       <div className="container">
         <div className="h1">Quizzes</div>
