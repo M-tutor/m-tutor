@@ -1,0 +1,70 @@
+.horizontal-tab {
+    border: 1px solid #ccc;
+    margin: 10px;
+    width: 100%;
+  }
+  
+  .tab-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 10px 30px;
+    background-color: #0D279E;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+
+  .tab-header-open {
+    border-radius: 25px 25px 0px 0px;
+  }
+  
+  .tab-title {
+    font-family: 'Poppins', sans-serif;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+  }
+  
+  .toggle-icon {
+    font-size: 20px;
+    color: #FFF;
+  }
+  
+  .dropdown-content {
+    margin-top: -15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    display: none;
+    border-radius: 0px 0px 25px 25px;
+    
+  }
+
+  .dropdown-content ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dropdown-content li {
+    padding: 10px 0px 0px 30px;;
+    text-align: left;
+    height: 40px;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(15, 14, 56, 0.30);
+    background: #FFF;
+  }
+
+  .list-text{
+    color: rgba(0, 0, 0, 0.50);
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .horizontal-tab .dropdown-content {
+    display: block;
+  }
+  

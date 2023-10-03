@@ -1,0 +1,77 @@
+.navbar-logo {
+    height: 60px;      /* Adjust as per your desired size */
+    width: auto;       /* This will maintain the aspect ratio of the logos */
+    margin-right: 10px; /* Optional: Space between the two logos */
+}
+
+.navbar-logo:last-child {
+    margin-right: 0;  /* Removes the margin from the second logo to avoid extra space on the right */
+}
+
+.navbar-logo-container {
+    display: flex; /* Activates Flexbox */
+    align-items: center; /* Centers children vertically */
+    gap:80px;
+}
+
+.search-bar {
+    width: 500px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: #FFF;
+    padding: 10px 40px 10px 15px;  /* Space for the icon on the right */
+    font-size: 16px;
+    border: none;  /* Remove the border */
+    background-image: url('../../assets/dashboardAssets/search.png'); 
+    background-position: right 10px center; 
+    background-repeat: no-repeat; 
+    outline: none;  /* This removes the focus outline which some browsers might add */
+}
+
+
+
+.nav{
+    display: flex;
+    flex-direction: row;
+}
+
+.search{
+    padding-left: 160px;
+}
+
+.box {
+    width: 200px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 1);
+    display: flex;              /* Use Flexbox */
+    align-items: center;        /* Center items vertically */
+    padding: 10px;              /* Space around the content */
+    gap: 10px;                 /* Space between the image and text */
+}
+
+.round-picture {
+    width: 40px;                /* Adjust as required */
+    height: 40px;
+    border-radius: 50%;         /* Makes the picture round */
+    object-fit: cover;  
+    padding: 10px;        /* Ensures image covers the dimensions without distortion */
+    gap:20px;
+}
+
+.box-text {
+    flex-grow: 1;               /* Allows the text to take up remaining space */
+    overflow: hidden;           /* In case the text content is too long */
+    white-space: nowrap;        /* Prevents text from wrapping */
+    text-overflow: ellipsis;    /* Adds an ellipsis (...) when text overflows */
+}
+
+.outer {
+    position: absolute;      /* Allow for precise positioning */
+    right: 4.5vw;            /* 4.5vw padding from the right */
+    /* top: 0;                  Align to the top, can be adjusted based on needs */
+    padding-left: 50px;      /* Maintain the left padding */
+    gap: 20px;
+}
