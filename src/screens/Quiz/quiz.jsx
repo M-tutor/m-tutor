@@ -6,6 +6,7 @@ import "./quiz.css";
 
 const Quiz = () => {
   const { subTopic, topic } = useParams();
+  
   const questions = [
     {
       question:
