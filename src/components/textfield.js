@@ -22,5 +22,3 @@ function CustomTextField({ label, name, sx, ...otherProps }) {
 }
 
 export default CustomTextField;
-
-// .css-aroov5-MuiInputBase-root-MuiOutlinedInput-root

@@ -47,7 +47,8 @@ function MainComponents() {
         <CustomTextField
           className="f"
           name="contactnum"
-          label="Whatsap number"
+          label="Whatsap number"          
+          // inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
         />
         <YearSelect
           className="g"
