@@ -5,11 +5,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function YearSelect() {
-  const [age, setAge] = React.useState("");
+export default function YearSelect({value, onChange}) {
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    if (onChange) {
+      onChange(event.target.value);
+    }
   };
 
   return (
@@ -19,8 +20,8 @@ export default function YearSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={value}
+          label="Year"
           onChange={handleChange}
         >
           <MenuItem value={2023}>2023</MenuItem>
