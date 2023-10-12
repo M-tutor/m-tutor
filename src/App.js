@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./screens/dashboard";
 import logo from "./logo.svg";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/navbar/Navbar";
 import Quiz from "./screens/Quiz/quiz";
 import QuizPage from "./screens/QuizPage/quizpage";
 import LoggingScreen from "./screens/LoggingScreen";

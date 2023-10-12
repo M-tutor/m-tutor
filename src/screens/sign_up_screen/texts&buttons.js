@@ -1,29 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import logo1 from "../../assets/Copy of Mora Maths- Vertical logo - White text.png";
 import logo2 from "../../assets/M-tutor - White logo.png";
 import googleLogo from "../../assets/Google__G__Logo.svg.png";
 import CustomTextField from "../../components/textfield";
 import CustomButton from "../../components/button";
-import BasicDatePicker from "../../components/datepicker";
+import CustomDatePicker from "../../components/datepicker";
 import DistrictSelect from "../../components/select_district";
 import YearSelect from "../../components/select_year";
+import Alert from '@mui/material/Alert';
+import {auth, googleProvider, createUserDocument} from '../../config/firebase'
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { useNavigate } from "react-router";
 
 function MainComponents() {
-  // const [userInputs, setInputs] = React.useState({
-  //   name: "",
-  //   email: "",
-  //   password: ""
-  // });
+  const [name, setName] = useState("");
+  const [school, setSchool] = useState("");
+  const [address, setAddress] = useState("");
+  const [district, setDistrict] = useState("");
+  const [dob, setDob] = useState("");
+  const [contactnum, setContactnum] = useState("");
+  const [year, setYear] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // function updateVar(event) {
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   setInputs((prevVal) => ({ ...prevVal, [name]: value }));
-  // }
+  async function signUp(){
+    try{
+      if (password1 !== password2){
+        setError('Passwords do not match');
+        return;
+      }
+        const {user} = await createUserWithEmailAndPassword(auth, email, password1);
+        await createUserDocument(user, {name, school, address, district, dob, contactnum, year});
+        navigate('/login');
+    } catch(error){
+        console.log(error);
+    }  
+  }
 
-  // function handleSubmit() {
-  //   console.log(userInputs);
-  // }
+  async function signUpWithGoogle(){
+    try{
+        await signInWithPopup(auth, googleProvider);
+        navigate('/dashboard');
+    } catch(error){
+        console.log(error);
+    } 
+  }
 
   return (
     <div className="maincontainer">
@@ -35,44 +59,54 @@ function MainComponents() {
       </div>
 
       <div className="inputsection">
-        <CustomTextField className="a" name="name" label="Name" />
-        <CustomTextField className="b" name="school" label="School" />
-        <CustomTextField className="c" name="address" label="Address" />
+        <CustomTextField className="a" name="name" label="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+        <CustomTextField className="b" name="school" label="School" value={school} onChange={(e) => setSchool(e.target.value)} />
+        <CustomTextField className="c" name="address" label="Address" value={address} onChange={(e) => setAddress(e.target.value)}/>
         <DistrictSelect
-          className="d"
-          name="district of the school belongs"
-          label="District of the school belongs"
+          value={district}
+          onChange={(newValue) => setDistrict(newValue)}
         />
-        <CustomTextField id="e" name="dob" label="Date of birth" />
+        {/* <CustomTextField id="e" name="dob" label="Date of birth" value={dob} onChange={(e) => setDob(e.target.value)}/> */}
+        <CustomDatePicker
+          className="e"
+          // label="Date of birth"
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+        />
         <CustomTextField
           className="f"
           name="contactnum"
-          label="Whatsap number"          
+          label="Whatsapp number" 
+          value={contactnum}
+          onChange={(e) => setContactnum(e.target.value)}         
           // inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
         />
         <YearSelect
-          className="g"
-          name="year"
-          label="Year (that going to face O/L)"
+          value={year}
+          onChange={(newValue) => setYear(newValue)}
         />
         <CustomTextField
           className="h"
           name="password1"
           label="Password"
           type="password"
+          value={password1}
+          onChange={(e) => setPassword1(e.target.value)}
         />
         <CustomTextField
           className="i"
           name="password2"
           label="Confirm Password"
           type="password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
         />
-        <CustomTextField className="j" name="email" label="Email Address" />
-
-        <CustomButton className="k">
+        {error && <Alert severity="error">{error}</Alert>}
+        <CustomTextField className="j" name="email" label="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <CustomButton className="k" onClick={signUp}>
           <h4 className="buttontexts">Sign up</h4>
         </CustomButton>
-        <CustomButton className="l" color="secondary">
+        <CustomButton className="l" color="secondary" onClick={signUpWithGoogle}>
           <div className="googlebutton">
             <img src={googleLogo} alt={"google logo"} width={"8%"} />
             <h4 className="buttontexts">Continue with google</h4>

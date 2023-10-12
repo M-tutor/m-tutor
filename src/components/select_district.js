@@ -5,11 +5,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function DistrictSelect() {
-  const [age, setAge] = React.useState("");
+export default function DistrictSelect({ value, onChange }) {
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    if (onChange) {
+      onChange(event.target.value);
+    }
   };
 
   return (
@@ -19,34 +20,34 @@ export default function DistrictSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={value}
+          label="District"
           onChange={handleChange}
         >
-          <MenuItem value={1}>Ampara</MenuItem>
-          <MenuItem value={2}>Anuradhapura</MenuItem>
-          <MenuItem value={3}>Badulla</MenuItem>
-          <MenuItem value={4}>Batticaloa</MenuItem>
-          <MenuItem value={5}>Colombo</MenuItem>
-          <MenuItem value={6}>Galle</MenuItem>
-          <MenuItem value={7}>Gampaha</MenuItem>
-          <MenuItem value={8}>Hambantota</MenuItem>
-          <MenuItem value={9}>Jaffna</MenuItem>
-          <MenuItem value={10}>Kandy</MenuItem>
-          <MenuItem value={11}>Kegalle</MenuItem>
-          <MenuItem value={12}>Kilinochchi</MenuItem>
-          <MenuItem value={13}>Kurunegala</MenuItem>
-          <MenuItem value={14}>Mannar</MenuItem>
-          <MenuItem value={15}>Matale</MenuItem>
-          <MenuItem value={16}>Matara</MenuItem>
-          <MenuItem value={17}>Moneragala</MenuItem>
-          <MenuItem value={18}>Mullaitivu</MenuItem>
-          <MenuItem value={19}>Nuwara Eliya</MenuItem>
-          <MenuItem value={20}>Polonnaruwa</MenuItem>
-          <MenuItem value={21}>Puttalam</MenuItem>
-          <MenuItem value={22}>Ratnapura</MenuItem>
-          <MenuItem value={23}>Trincomalee</MenuItem>
-          <MenuItem value={24}>Vavuniya</MenuItem>
+          <MenuItem value='Ampara'>Ampara</MenuItem>
+          <MenuItem value='Anuradhapura'>Anuradhapura</MenuItem>
+          <MenuItem value='Badulla'>Badulla</MenuItem>
+          <MenuItem value='Batticaloa'>Batticaloa</MenuItem>
+          <MenuItem value='Colombo'>Colombo</MenuItem>
+          <MenuItem value='Galle'>Galle</MenuItem>
+          <MenuItem value='Gampaha'>Gampaha</MenuItem>
+          <MenuItem value='Hambantota'>Hambantota</MenuItem>
+          <MenuItem value='Jaffna'>Jaffna</MenuItem>
+          <MenuItem value='Kandy'>Kandy</MenuItem>
+          <MenuItem value='Kegalle'>Kegalle</MenuItem>
+          <MenuItem value='Kilinochchi'>Kilinochchi</MenuItem>
+          <MenuItem value='Kurunegala'>Kurunegala</MenuItem>
+          <MenuItem value='Mannar'>Mannar</MenuItem>
+          <MenuItem value='Matale'>Matale</MenuItem>
+          <MenuItem value='Matara'>Matara</MenuItem>
+          <MenuItem value='Moneragala'>Moneragala</MenuItem>
+          <MenuItem value='Mullaitivu'>Mullaitivu</MenuItem>
+          <MenuItem value='Nuwara Eliya'>Nuwara Eliya</MenuItem>
+          <MenuItem value='Polonnaruwa'>Polonnaruwa</MenuItem>
+          <MenuItem value='Puttalam'>Puttalam</MenuItem>
+          <MenuItem value='Ratnapura'>Ratnapura</MenuItem>
+          <MenuItem value='Trincomalee'>Trincomalee</MenuItem>
+          <MenuItem value='Vavuniya'>Vavuniya</MenuItem>
         </Select>
       </FormControl>
     </Box>

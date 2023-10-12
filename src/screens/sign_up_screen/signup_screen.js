@@ -7,6 +7,7 @@ import "./signup_screen.css";
 import BackgroundImage from "../../components/background_image";
 import theme1 from "../../components/customised_theme";
 
+
 function SignUp() {
   return (
     <>
