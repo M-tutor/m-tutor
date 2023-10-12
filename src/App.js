@@ -1,3 +1,5 @@
+
+import React from "react";
 import "./App.css";
 // import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,6 +27,7 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
