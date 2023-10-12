@@ -1,29 +1,24 @@
-
-
-
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './screens/dashboard';
-import logo from "./logo.svg";
-
-
-import QuizPage from "./screens/QuizPage/quizpage";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./screens/dashboard";
+import Navbar from "./components/navbar/Navbar";
 import Quiz from "./screens/Quiz/quiz";
-import Home from "./screens/home";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import QuizPage from "./screens/QuizPage/quizpage";
+import LoggingScreen from "./screens/LoggingScreen";
 
 function App() {
   return (
-
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quizpage" element={<QuizPage />} />
-        <Route path="/quiz/:topic/:subTopic" element={<Quiz />} />
-      </Routes>
-    </Router>
-
-   
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz/:topic/:subTopic" element={<Quiz />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/" element={<LoggingScreen />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

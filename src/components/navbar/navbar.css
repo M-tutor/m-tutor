@@ -1,77 +1,150 @@
-.navbar-logo {
-    height: 60px;      /* Adjust as per your desired size */
-    width: auto;       /* This will maintain the aspect ratio of the logos */
-    margin-right: 10px; /* Optional: Space between the two logos */
+.nav-container {
+    background: rgb(227, 233, 245);
+    padding: 10px 15px;
+    font-size: clamp(16px, 2.8vw, 18px);
+    font-weight: 500;
 }
 
-.navbar-logo:last-child {
-    margin-right: 0;  /* Removes the margin from the second logo to avoid extra space on the right */
-}
-
-.navbar-logo-container {
-    display: flex; /* Activates Flexbox */
-    align-items: center; /* Centers children vertically */
-    gap:80px;
-}
-
-.search-bar {
-    width: 500px;
-    height: 60px;
-    flex-shrink: 0;
-    border-radius: 25px;
-    background: #FFF;
-    padding: 10px 40px 10px 15px;  /* Space for the icon on the right */
-    font-size: 16px;
-    border: none;  /* Remove the border */
-    background-image: url('../../assets/dashboardAssets/search.png'); 
-    background-position: right 10px center; 
-    background-repeat: no-repeat; 
-    outline: none;  /* This removes the focus outline which some browsers might add */
-}
-
-
-
-.nav{
+.nav-container > section {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.search{
-    padding-left: 160px;
+/*====================== logos ======================*/
+
+.img-container {
+    display: flex;
+    gap: 30px;
+    justify-content: start;
+    align-items: center;
 }
 
-.box {
-    width: 200px;
-    height: 40px;
-    flex-shrink: 0;
+.img-container img {
+    width: 100%;
+}
+
+.img-black-logo {
+    width: clamp(140px, 24.2vw, 170px);
+}
+
+.img-tutor-logo {
+    width: clamp(25px, 4.2vw, 30px);
+}
+
+.profile {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255);
+    padding: 2px 10px;
+    border-radius: 15px;
+    animation-name: slider;
+    animation-duration: .3s;
+}
+
+.profile_img {
+    width: clamp(45px, 7.1vw, 50px);
+}
+
+/*====================== search ======================*/
+
+.search {
+    width: 20%;
+    min-width: 200px;
+    animation-name: slider;
+    animation-duration: .3s;
+}
+
+.search_input {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
     border-radius: 25px;
-    background: rgba(255, 255, 255, 1);
-    display: flex;              /* Use Flexbox */
-    align-items: center;        /* Center items vertically */
-    padding: 10px;              /* Space around the content */
-    gap: 10px;                 /* Space between the image and text */
+    box-sizing: border-box;
+    background: rgba(255, 255, 255);
+    outline: none;
+    font-size: 16px;
 }
 
-.round-picture {
-    width: 40px;                /* Adjust as required */
-    height: 40px;
-    border-radius: 50%;         /* Makes the picture round */
-    object-fit: cover;  
-    padding: 10px;        /* Ensures image covers the dimensions without distortion */
-    gap:20px;
+/*====================== main-menu ======================*/
+.main-menu_container {
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    background: rgb(227, 233, 245);
+    width: 200px;
+    padding: 10px 15px;
+    list-style: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    animation-name: slider;
+    animation-duration: .3s;
 }
 
-.box-text {
-    flex-grow: 1;               /* Allows the text to take up remaining space */
-    overflow: hidden;           /* In case the text content is too long */
-    white-space: nowrap;        /* Prevents text from wrapping */
-    text-overflow: ellipsis;    /* Adds an ellipsis (...) when text overflows */
+
+/*====================== off-canvas menu ======================*/
+
+.menu-container {
+    margin-top: 10px;
+    display: none;
 }
 
-.outer {
-    position: absolute;      /* Allow for precise positioning */
-    right: 4.5vw;            /* 4.5vw padding from the right */
-    /* top: 0;                  Align to the top, can be adjusted based on needs */
-    padding-left: 50px;      /* Maintain the left padding */
-    gap: 20px;
+.menu {
+    display: none;
+    font-size: 25px;
+    animation-name: slider;
+    animation-duration: .3s;
 }
+
+.offCanvas-menu-item_container {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    gap: 10px;
+}
+
+.offCanvas-menu-item_container li {
+    min-width: 200px;
+    padding: 5px 15px;
+    background: rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offCanvas-menu-item_container a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen  and (max-width: 700px) {
+    .profile, .search {
+        display: none;
+
+    }
+
+    .menu, .menu-container {
+        display: block;
+    }
+}
+
+
+/*================== animations ==================*/
+@keyframes slider {
+    0% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
