@@ -1,0 +1,356 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+* {
+  box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  background-image: url("../assets/Images/background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*content*/
+.content {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: white;
+  padding: 1rem 0;
+}
+.text-content > h2 {
+  font-size: 8vw;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 55px;
+  margin-top: 40%;
+  line-height: 100%;
+}
+
+.text-content > h1 {
+  font-size: 10vw;
+  letter-spacing: 0.35px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-top: 2px;
+
+  color: aqua;
+}
+.two-button {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+.btn {
+  width: 100%;
+  height: 55px;
+  padding: 0.7em 0em;
+  font-weight: 600;
+  font-size: 15px;
+}
+.w-btn {
+  color: #000000;
+  background: white;
+  border-radius: 10px;
+}
+.w-btn:hover {
+  background: transparent;
+  color: white;
+  border: 3px solid white;
+  transition: 0.55s;
+}
+.t-btn {
+  background: transparent;
+  border: 3px solid aqua;
+  color: aqua;
+  border-radius: 10px;
+}
+.t-btn:hover {
+  color: black;
+  background: white;
+  border: none;
+  transition: 0.55s;
+}
+
+/*nav-bar*/
+.search-section {
+  background: white;
+  border-radius: 25px;
+
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-btn {
+  border: none;
+  background: white;
+  margin: 20px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.3;
+}
+input {
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  height: auto;
+  width: 80%;
+  font-weight: 500;
+  font-size: 16px;
+  opacity: 0.3;
+}
+.link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  background: linear-gradient(0deg, rgb(59, 229, 255), rgb(59, 229, 255))
+    no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 350ms;
+  padding-bottom: 2px;
+  --bg-h: 2px;
+}
+.link:where(:hover, :focus-visible) {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}
+.active {
+  text-decoration: none;
+  color: #ffffff;
+  border-bottom: 2px solid rgb(59, 229, 255);
+  font-weight: 500;
+}
+.logo {
+  display: block;
+  float: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  height: 80px;
+}
+.logo-m {
+  display: block;
+  float: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  height: 90px;
+  visibility: hidden;
+  width: 0;
+}
+.logosection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-nav > h2 {
+  vertical-align: center;
+  text-align: center;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #072274;
+
+  color: #fff;
+  height: 120px;
+  padding: 1em;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: "";
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: "";
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+/*responsive-css*/
+@media (max-width: 992px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 120px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    height: 3.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #072274;
+  }
+}
+@media (min-width: 992px) {
+  .top-nav {
+    background: transparent;
+  }
+  .text-content > h1 {
+    font-size: 4em;
+    margin-bottom: 50px;
+    font-weight: 600;
+  }
+  .btn {
+    padding: 0.8em 2em;
+    width: 25%;
+  }
+  .text-content > h2 {
+    width: 59%;
+    font-size: 3.5em;
+    margin-top: 100px;
+  }
+  .content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .two-button {
+    flex-direction: row;
+  }
+  .logo {
+    height: 90px;
+  }
+  .logo-m {
+    visibility: visible;
+    width: auto;
+  }
+  @media (min-width: 1400px) {
+    .text-content > h2 {
+      width: 50%;
+    }
+    .btn {
+      width: 23%;
+    }
+    .text-content > h1 {
+      font-size: 5em;
+    }
+    .menu > li {
+      margin: 0 2.5rem;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .two-button {
+    justify-content: space-around;
+  }
+
+  @media (max-width: 300px) {
+    .top-nav {
+      height: 90px;
+    }
+    .menu {
+      margin-top: 90px;
+    }
+    .logo {
+      height: 70px;
+    }
+  }
+}
