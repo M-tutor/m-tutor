@@ -1,0 +1,32 @@
+@import url(https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css);
+
+.volunteer-1 {
+  background-image: url(../../assets/volunteers-images/person1.jpg);
+}
+
+.volunteer-2 {
+  background-image: url(../../assets/volunteers-images/person2.jpg);
+}
+.volunteer-3 {
+  background-image: url(../../assets/volunteers-images/person3.jpg);
+}
+.volunteer-4 {
+  background-image: url(../../assets/volunteers-images/person4.jpg);
+}
+.volunteer-5 {
+  background-image: url(../../assets/volunteers-images/person5.jpg);
+}
+.volunteer-6 {
+  background-image: url(../../assets/volunteers-images/person6.jpg);
+}
+
+.aspect {
+  aspect-ratio: 2/3;
+  background-position: top;
+  background-size: cover;
+  outline: solid 3px rgba(0, 0, 255, 0.491);
+}
+
+.view-more-btn {
+  outline: solid 2px blue;
+}
