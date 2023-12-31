@@ -54,7 +54,7 @@ function About() {
           Meet Our Volunteers
         </p>
       </div>
-      <div className=" flex flex-col gap-6 w-10/12 sm:w-1/2 md:grid md:grid-cols-4 md:w-3/4 md:justify-between">
+      <div className=" flex flex-col gap-6 w-10/12 sm:w-1/2 md:grid md:grid-cols-4 md:gap-5 xl:gap-10 md:w-3/4 md:justify-between">
         {volunteerDetails.slice(0, volunteersCount).map((item, index) => (
           <Volunteer key={index} details={item} index={index} />
         ))}

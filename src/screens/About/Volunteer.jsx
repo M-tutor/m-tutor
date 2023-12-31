@@ -1,7 +1,7 @@
 function Volunteer({ details, index }) {
   return (
     <div
-      className={`relative overflow-hidden md:w-full md:mx-1 lg:mx-5 bg-blue-600 rounded-2xl aspect volunteer-${
+      className={`relative overflow-hidden md:w-full bg-blue-600 rounded-2xl aspect volunteer-${
         index + 1
       }`}
     >
