@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./App.css";
 // import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
@@ -14,10 +13,9 @@ import SignUp from "./screens/sign_up_screen/signup_screen";
 //import Home from "./screens/home";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { auth } from "./config/firebase";
-import { useEffect , useState} from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -60,13 +58,14 @@ function App() {
           {/* Redirect to login if user is not signed in */}
           <Route
             path="/*"
-            element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
+            element={
+              user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            }
           />
         </Routes>
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App;
