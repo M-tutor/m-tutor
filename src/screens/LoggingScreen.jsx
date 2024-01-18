@@ -2,6 +2,7 @@ import React from "react";
 import CustomInput from "../components/CustomInput";
 import MoraMaths from "../assets/Icons/MoraMaths";
 import { LoginForm } from "../components/LoginForm";
+import "./LoggingScreen.css";
 
 function LoggingScreen(props) {
   return (
