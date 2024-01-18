@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import "./Navbar.css";
+import "./navbar.css";
 import MoraMathsBlackLogo from "../../assets/MoraMathsBlackLogo.png";
 import MTutorLogo from "../../assets/MTutorColorLogo.png";
 import profileImg from "../../assets/dp.png";
