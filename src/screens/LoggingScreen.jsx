@@ -26,6 +26,7 @@ function LoggingScreen(props) {
         <img
           src={require("../assets/Images/geomoetrical-cubes-paper 1.png")}
           className="md:hidden h-screen w-auto"
+          alt=""
         ></img>
       </div>
     </div>
