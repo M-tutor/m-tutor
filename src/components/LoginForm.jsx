@@ -54,8 +54,8 @@ export const LoginForm = () => {
           value={password}
           className="bg-dark border-2 border-solid border-light rounded-md h-8 text-light w-3/5"
         />
-        <CustomButton className="mt-12">Log in</CustomButton>
-        <CustomButton className="bg-light p-2 mt-4">
+        <CustomButton className="mt-12 hover:bg-btnH">Log in</CustomButton>
+        <CustomButton className="bg-light p-2 mt-4 hover:bg-lightH">
           <div className="flex items-center">
             <GoogleIcon />
             <p>continue with google</p>
