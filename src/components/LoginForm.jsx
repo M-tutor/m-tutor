@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import GoogleIcon from "../assets/Icons/GoogleIcon";
-import {auth, googleProvider} from '../config/firebase';
-import { signInWithEmailAndPassword, signInWithPopup} from "firebase/auth";
+import { auth, googleProvider } from "../config/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router";
 
 export const LoginForm = () => {
@@ -14,20 +14,20 @@ export const LoginForm = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <form onSubmit={signIn}>
@@ -54,14 +54,8 @@ export const LoginForm = () => {
           value={password}
           className="bg-dark border-2 border-solid border-light rounded-md h-8 text-light w-3/5"
         />
-
-<<<<<<< HEAD
-        <CustomButton>Log in</CustomButton>
-        <CustomButton className="bg-light p-2" onClick={signInWithGoogle}>
-=======
         <CustomButton className="mt-12">Log in</CustomButton>
         <CustomButton className="bg-light p-2 mt-4">
->>>>>>> origin/logging-screen
           <div className="flex items-center">
             <GoogleIcon />
             <p>continue with google</p>
