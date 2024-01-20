@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import logo1 from "../../assets/Copy of Mora Maths- Vertical logo - White text.png";
 import logo2 from "../../assets/M-tutor - White logo.png";
 import googleLogo from "../../assets/Google__G__Logo.svg.png";
@@ -11,6 +11,7 @@ import Alert from '@mui/material/Alert';
 import {auth, googleProvider, createUserDocument} from '../../config/firebase'
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { useNavigate } from "react-router";
+
 
 function MainComponents() {
   const [name, setName] = useState("");
@@ -25,6 +26,8 @@ function MainComponents() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
 
   async function signUp(){
     try{
@@ -48,6 +51,23 @@ function MainComponents() {
         console.log(error);
     } 
   }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in
+        
+        setUser(user);
+        
+      } else {
+        // No user is signed in
+        
+      }
+    });
+
+    // Cleanup the subscription on component unmount
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="maincontainer">
@@ -116,7 +136,7 @@ function MainComponents() {
 
       <div className="bottomcontainer">
         <h5>Already have an account?</h5>
-        <a href="https://www.hipnoterapie.org/underconstruction.png">
+        <a href={user ? "/dashboard" : "/login"}>
           <h5 id="logintext">
             <b>Login</b>
           </h5>

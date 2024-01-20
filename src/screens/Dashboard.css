@@ -1,0 +1,105 @@
+/* Dashboard.css */
+
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .volunteer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 1%;
+    border-radius: 10px;
+  }
+  
+  .volunteer-image {
+    background-color: #ccc; /* Placeholder color */
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    margin-bottom: 20px;
+  }
+  
+  .volunteer-details {
+    text-align: center;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 500px;
+    /* width: 100px; */
+  }
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container */
+  }
+  
+  .option {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container */
+  }
+  .title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin: 20px;
+    color: #0f0e38;
+  }
+  .overlay-text {
+    position: absolute;
+    top: 200px; /* Adjust this value to vertically center the text */
+    left: 200px; /* Adjust this value to horizontally center the text */
+    transform: translate(-50%, -50%); /* Center the text precisely */
+    color: white; /* Set the text color */
+    /* Add any other styles you want for the h2 element */
+  }
+  .option-image {
+    background-color: #ccc; /* Placeholder color */
+    width: 100%;
+    height: 250px; /* Adjust the height as needed */
+    margin-bottom: 10px;
+    padding-top: 80px;
+  }
+  
+  .option h3 {
+    margin-top: 10px;
+    font-size: 18px; /* Adjust the font size as needed */
+  }
+  
+  @media (max-width: 768px) {
+    .volunteer-image {
+      order: -1; /* Move image above details for mobile view */
+    }
+  
+    .options {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .option {
+      width: 80%;
+    }
+  }
+  

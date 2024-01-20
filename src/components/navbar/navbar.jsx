@@ -6,9 +6,15 @@ import MTutorLogo from "../../assets/MTutorColorLogo.png";
 import profileImg from "../../assets/dp.png";
 import { HiMenuAlt3,HiOutlineX } from "react-icons/hi";
 import {auth} from "../../config/firebase"
+import { useLocation } from 'react-router-dom';
 
 
 const Navbar = () => {
+
+    let userAvailable = true;
+    const location = useLocation();
+    userAvailable = location.state && location.state.userAvailable;
+
 
    
     const menuRef = useRef(null);
@@ -16,6 +22,8 @@ const Navbar = () => {
         mainMenuIsOpen:false,
         offCanvasMenuIsOpen:false
     })
+
+    const [user, setUser] = useState(null);
 
     const [displayName, setDisplayName] = useState(null);
 
@@ -44,6 +52,7 @@ const Navbar = () => {
           if (user) {
             // User is signed in
             const userDisplayName = user.displayName;
+            setUser(user);
             setDisplayName(userDisplayName);
           } else {
             // No user is signed in
@@ -88,7 +97,8 @@ const Navbar = () => {
                         placeholder="Search here..."
                     />
                 </div>
-                <div className='profile' onClick={()=>handleMenu('mainMenuIsOpen')}>
+                {user && <div className='profile' onClick={()=>handleMenu('mainMenuIsOpen')}>
+
                     <div className="user-profile">
                         <span>{displayName}</span>
                     </div>
@@ -107,7 +117,7 @@ const Navbar = () => {
                             <button onClick={handleLogout}>Logout</button>
                             </li>
                         </ul>}
-                </div>
+                </div>}
                 <div className='menu'>
                     {
                         menu.offCanvasMenuIsOpen ? (<HiOutlineX onClick={()=>handleMenu('offCanvasMenuIsOpen')}/>):
