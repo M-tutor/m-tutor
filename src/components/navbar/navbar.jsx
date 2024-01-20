@@ -67,23 +67,27 @@ const Navbar = () => {
       const handleLogout = async () => {
         try {
           await auth.signOut();
-          window.location.href = "/login"; // Redirect to the login page after logout
+          window.location.href = "/signup"; // Redirect to the login page after logout
         } catch (error) {
           console.error("Error logging out:", error.message);
         }
       };
 
+      const onLogoClicked = () =>{
+        window.location.href = "/";
+      }
+
     return (
         <section className='nav-container'>
             <section>
                 <div className="img-container">
-                    <div className="img-black-logo">
+                    <div className="img-black-logo" onClick={onLogoClicked}>
                         <img
                             src={MoraMathsBlackLogo}
                             alt="MoraMathsBlackLogo"
                         />
                     </div>
-                    <div className="img-tutor-logo">
+                    <div className="img-tutor-logo" onClick={onLogoClicked}>
                         <img
                             src={MTutorLogo}
                             alt="MTutorLogo"
