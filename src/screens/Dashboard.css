@@ -9,7 +9,7 @@
   
   .volunteer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 90%;
     margin-top: 1%;

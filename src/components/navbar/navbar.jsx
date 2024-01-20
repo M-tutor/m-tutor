@@ -81,13 +81,13 @@ const Navbar = () => {
         <section className='nav-container'>
             <section>
                 <div className="img-container">
-                    <div className="img-black-logo" onClick={onLogoClicked}>
+                    <div className="img-black-logo" onClick={onLogoClicked} style={{marginLeft:10}}>
                         <img
                             src={MoraMathsBlackLogo}
                             alt="MoraMathsBlackLogo"
                         />
                     </div>
-                    <div className="img-tutor-logo" onClick={onLogoClicked}>
+                    <div className="img-tutor-logo" onClick={onLogoClicked} style={{marginLeft:10}}>
                         <img
                             src={MTutorLogo}
                             alt="MTutorLogo"
@@ -122,13 +122,13 @@ const Navbar = () => {
                             </li>
                         </ul>}
                 </div>}
-                <div className='menu'>
+                {/* <div className='menu'>
                     {
                         menu.offCanvasMenuIsOpen ? (<HiOutlineX onClick={()=>handleMenu('offCanvasMenuIsOpen')}/>):
                             (<HiMenuAlt3 onClick={()=>handleMenu('offCanvasMenuIsOpen')}/>)
                     }
 
-                </div>
+                </div> */}
             </section>
             {
                 menu.offCanvasMenuIsOpen &&

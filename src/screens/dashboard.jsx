@@ -3,6 +3,8 @@ import React from "react";
 // import Navbar from "../components/navbar/navbar";
 import "./Dashboard.css";
 import VolunteerImage from "../assets/volunteers-images/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes-removebg-preview 1.png";
+import UnderConstructionImage from '../assets/under-construction-2891888_1280.webp';
+import { BorderStyle } from "@mui/icons-material";
 
 export default function Dashboard() {
   const onDivClick = (divname) => {
@@ -11,13 +13,13 @@ export default function Dashboard() {
         window.location.href = "/quizpage";
         break;
       case "Tutorials":
-        window.location.href = "/tutorialpage";
+        window.location.href = "https://www.youtube.com/@MoraMaths";
         break;
       case "Progress":
-        window.location.href = "/progress";
+        window.location.href = UnderConstructionImage;
         break;
       case "Profile":
-        window.location.href = "/profile";
+        window.location.href = UnderConstructionImage;
         break;
       default:
         console.log("Default");
@@ -31,11 +33,11 @@ export default function Dashboard() {
           <img
             src={VolunteerImage}
             alt="Volunteer"
-            style={{ width: 360, height: 360 }}
+            style={{ width: 300, height: 300 }}
           />
         </div>
         <div className="volunteer-details">
-          <h2 styles= {{color : 'white'}}>Meet our volunteers</h2>
+          <span styles= {{color : 'white',fontSize:30}}>Meet our volunteers</span>
           {/* Add your volunteer details here */}
           <p style={{color:'white'}}>
             sit amet, consectetur adipiscing elit. Quisque ullamcorper nibh nec
@@ -83,6 +85,7 @@ export default function Dashboard() {
           onClick={() => {
             onDivClick("Progress");
           }}
+          style={{ borderRadius: 10 , BorderStyle: 'none' }}
         >
           <div className="option-image background-image-progress">
             <h3

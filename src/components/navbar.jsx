@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+
 class Navbar extends React.Component {
     scrollToSection = (ref) => {
         if (ref.current) {
@@ -35,15 +36,15 @@ class Navbar extends React.Component {
         </label>
         <ul className="menu">
           <li>
-            {/* <NavLink
+            <NavLink
               to="#home"
               className={({ isActive }) => (isActive ? "active" : "link")}
             >
               HOME
-            </NavLink> */}
-            <a className={({ isActive }) => (isActive ? "active" : "link")} href="#home">
+            </NavLink>
+            {/* <a className={({ isActive }) => (isActive ? "active" : "link")} href="#home">
             HOME
-            </a>
+            </a> */}
           </li>
           <li>
             <NavLink
@@ -54,19 +55,19 @@ class Navbar extends React.Component {
             </NavLink>
           </li>
           <li>
-            {/* <NavLink
+            <NavLink
               to="#about"
               className={({ isActive }) => (isActive ? "active" : "link")}
             >
               ABOUT
-            </NavLink> */}
-            <a
+            </NavLink>
+            {/* <a
               className={({ isActive }) => (isActive ? "active" : "link")}
               href="about"
               
             >
               ABOUT
-            </a>
+            </a> */}
           </li>
           <li>
             <div className="search-section">

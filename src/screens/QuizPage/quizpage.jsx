@@ -33,7 +33,8 @@ function QuizPage() {
 
   const handleTopic = (item, tabTitle) => {
     console.log(item, tabTitle);
-    navigate(`/quiz/${item}/${tabTitle}`);
+    // navigate(`/quiz/${item}/${tabTitle}`);
+    navigate('/quizpage');
   };
   return (
     <>
