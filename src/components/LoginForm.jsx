@@ -55,8 +55,13 @@ export const LoginForm = () => {
           className="bg-dark border-2 border-solid border-light rounded-md h-8 text-light w-3/5"
         />
 
+<<<<<<< HEAD
         <CustomButton>Log in</CustomButton>
         <CustomButton className="bg-light p-2" onClick={signInWithGoogle}>
+=======
+        <CustomButton className="mt-12">Log in</CustomButton>
+        <CustomButton className="bg-light p-2 mt-4">
+>>>>>>> origin/logging-screen
           <div className="flex items-center">
             <GoogleIcon />
             <p>continue with google</p>
