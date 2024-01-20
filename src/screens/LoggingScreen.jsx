@@ -13,10 +13,10 @@ function LoggingScreen(props) {
             <MoraMaths className={"md:w-28 md:h-28"}></MoraMaths>
           </div>
           <div className="text-center">
-            <h2 className="text-light md:text-2xl xl:text-3xl text-4xl font-bold">
+            <h2 className="text-light md:text-2xl xl:text-3xl text-4xl font-bold mt-16">
               Login to your account
             </h2>
-            <h2 className="text-light text-2xl xl:text-xl">
+            <h2 className="text-light text-2xl xl:text-xl mb-8">
               Let's get started
             </h2>
           </div>
