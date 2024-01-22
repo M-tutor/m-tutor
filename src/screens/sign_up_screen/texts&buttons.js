@@ -8,7 +8,8 @@ import CustomDatePicker from "../../components/datepicker";
 import DistrictSelect from "../../components/select_district";
 import YearSelect from "../../components/select_year";
 import Alert from '@mui/material/Alert';
-import {auth, googleProvider, createUserDocument} from '../../config/firebase'
+import {auth, googleProvider} from '../../config/firebase'
+import { createUserDocument } from "../../services/userService";
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { useNavigate } from "react-router";
 
@@ -37,7 +38,7 @@ function MainComponents() {
       }
         const {user} = await createUserWithEmailAndPassword(auth, email, password1);
         await createUserDocument(user, {name, school, address, district, dob, contactnum, year});
-        navigate('/login');
+        navigate('/dashboard');
     } catch(error){
         console.log(error);
     }  
@@ -45,7 +46,9 @@ function MainComponents() {
 
   async function signUpWithGoogle(){
     try{
-        await signInWithPopup(auth, googleProvider);
+        let {user} = await signInWithPopup(auth, googleProvider);
+
+        await createUserDocument(user, {name:user?.displayName, school, address, district, dob, contactnum, year});
         navigate('/dashboard');
     } catch(error){
         console.log(error);

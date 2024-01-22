@@ -36,6 +36,8 @@ function App() {
     <div>
       <BrowserRouter>
         {/* {window.location.href === '/login' && <Navbar />} */}
+        {JSON.stringify(user)}
+        {window.location.pathname}
         {user && window.location.pathname !== '/' && window.location.pathname !== '/login' && window.location.pathname !== '/signup' && window.location.pathname !== '/about' && <Navbar />}
         {!user && (window.location.pathname === '/dashboard' || window.location.pathname === '/quizpage') && <Navbar />}
         <Routes>
