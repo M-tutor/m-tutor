@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 
 import './nav-bar.css'
 import MoraMathsBlackLogo from "../../assets/MoraMathsBlackLogo.png";
@@ -7,25 +7,17 @@ import profileImg from "../../assets/dp.png";
 import { HiMenuAlt3,HiOutlineX } from "react-icons/hi";
 import {auth} from "../../config/firebase"
 import { useLocation } from 'react-router-dom';
+import { AuthContext } from '../../contextStore/AuthProvider';
 
 
 const Navbar = () => {
+    const {currentUser} = useContext(AuthContext)
 
-    let userAvailable = true;
-    const location = useLocation();
-    userAvailable = location.state && location.state.userAvailable;
-
-
-   
     const menuRef = useRef(null);
     const [menu,setMenu ] = useState({
         mainMenuIsOpen:false,
         offCanvasMenuIsOpen:false
     })
-
-    const [user, setUser] = useState(null);
-
-    const [displayName, setDisplayName] = useState(null);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -46,23 +38,6 @@ const Navbar = () => {
             [menuType]: !menu[menuType],
         }))
     }
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-          if (user) {
-            // User is signed in
-            const userDisplayName = user.displayName;
-            setUser(user);
-            setDisplayName(userDisplayName);
-          } else {
-            // No user is signed in
-            setDisplayName(null);
-          }
-        });
-    
-        // Cleanup the subscription on component unmount
-        return () => unsubscribe();
-      }, []);
 
       const handleLogout = async () => {
         try {
@@ -101,10 +76,10 @@ const Navbar = () => {
                         placeholder="Search here..."
                     />
                 </div>
-                {user && <div className='profile' onClick={()=>handleMenu('mainMenuIsOpen')}>
+                {currentUser && <div className='profile' onClick={()=>handleMenu('mainMenuIsOpen')}>
 
                     <div className="user-profile">
-                        <span>{displayName}</span>
+                        <span>{currentUser?.displayName}</span>
                     </div>
                     <img
                         className='profile_img'
