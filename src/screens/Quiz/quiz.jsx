@@ -1,91 +1,122 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import "./quiz.css";
-// import logo from "../../assets/M-tutor-white.png";
-// import quizImg from "../../assets/3827186316baeba98a06052b1fd4711a.png";
+import { AuthContext } from "../../contextStore/AuthProvider";
+import quizService from "../../services/quizService";
 
 const Quiz = () => {
   const { subTopic, topic } = useParams();
-  const questions = [
-    {
-      question:
-        "In the given figure, ABCD is a cyclic quadrilateral whose side AB is a diameter of the circle through A, B, and C. If ADC=130, find CAB.?",
-      answers: [
-        { type: "text", content: "40°" },
-        {
-          type: "image",
-          content:
-            "https://th.bing.com/th/id/R.b6f130e8af70a879efdea41d62451d3c?rik=lrv3Zz4RuXiGiA&riu=http%3a%2f%2f1.bp.blogspot.com%2f-OHYn2oaFjFs%2fT69JT2qdOBI%2fAAAAAAAACwI%2fmnL9cWnCRcE%2fs1600%2fGoogle%2bWallpapers%2bFree.jpg&ehk=LSgQ69ryfMtL%2fah%2fPqrx5BjEM%2f9bNJed7MfYrhs6GF4%3d&risl=&pid=ImgRaw&r=0",
-        },
-        { type: "text", content: "30°" },
-        { type: "text", content: "130°" },
-      ],
-    },
-    {
-      question: "Which planet is known as the Red Planet?",
-      answers: [
-        { type: "text", content: "Mars" },
-        { type: "text", content: "Earth" }, // Example image URL
-        { type: "text", content: "Jupiter" },
-        { type: "text", content: "Venus" },
-      ],
-    },
-  ];
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const id = queryParams.get("id");
+  const [questions, setQuestions] = useState([]);
+  const [isloading, setIsLoading] = useState(false);
+  const { currentUser } = useContext(AuthContext);
 
-  const initialSelectedAnswers = Array(questions.length).fill(null);
-  const [selectedAnswers, setSelectedAnswers] = useState(
-    initialSelectedAnswers
-  );
-  const currentQuestion = questions[currentQuestionIndex];
+  const [quizStatus, setQuizStatus] = useState({
+    currentQuestionIndex: 0,
+    selectedAnswers: Array(questions.length).fill(null),
+    quizID: id,
+  });
+
+  const currentQuestion = questions[quizStatus.currentQuestionIndex];
+
+  useEffect(() => {
+    const quizStatusFromLocalStorage = localStorage.getItem(id);
+    if (quizStatusFromLocalStorage) {
+      setQuizStatus(JSON.parse(quizStatusFromLocalStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    const getQuestions = async () => {
+      setIsLoading(true);
+      const data = await quizService.getQuestionsforQuizID(id);
+      setQuestions(data);
+      setIsLoading(false);
+      console.log(data)
+    };
+    getQuestions();
+  }, [id]);
+
+  const submitquiz = () => {};
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (quizStatus.currentQuestionIndex < questions.length - 1) {
+      updateQuizStatus({
+        ...quizStatus,
+        currentQuestionIndex: quizStatus.currentQuestionIndex + 1,
+      });
     } else {
-      alert("Quiz Finished!");
+      submitquiz();
     }
   };
 
   const handlePreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    if (quizStatus.currentQuestionIndex > 0) {
+      updateQuizStatus({
+        ...quizStatus,
+        currentQuestionIndex: quizStatus.currentQuestionIndex - 1,
+      });
     }
   };
 
   const handleAnswerSelection = (answer, index) => {
-    const updatedSelectedAnswers = [...selectedAnswers];
+    const updatedSelectedAnswers = [...quizStatus.selectedAnswers];
     updatedSelectedAnswers[index] = answer;
-    setSelectedAnswers(updatedSelectedAnswers);
+
+    updateQuizStatus({
+      ...quizStatus,
+      selectedAnswers: updatedSelectedAnswers,
+    });
   };
+
+  const updateQuizStatus = (newQuizStatus) => {
+    setQuizStatus(newQuizStatus);
+    if (currentUser) {
+      localStorage.setItem(id, JSON.stringify(newQuizStatus));
+    }
+  };
+
+  const handleFinished = () => {
+
+    const correctAnswers = questions.map((question) => question.options[question.answer].content);
+    const score = quizStatus.selectedAnswers.filter(
+      (answer, index) => answer === correctAnswers[index]
+    ).length;
+    alert(`Your score is ${score} out of ${questions.length}`);
+  }
 
   return (
     <div className="quiz-container">
       <div className="left-container">
+        {isloading && <h1>Loading...</h1>}
         <div className="upper-tab">
           {/* <img src={logo} /> */}
-          <h3>{`${topic} > ${subTopic} > ${currentQuestionIndex + 1}`}</h3>
+          <h3>{`${topic} > ${subTopic}> ${quizStatus.currentQuestionIndex + 1} of ${
+            questions?.length
+          }`}</h3>
         </div>
-        <h2>Question {currentQuestionIndex + 1}</h2>
+        <h2>Question {quizStatus.currentQuestionIndex + 1}</h2>
         <div className="question-container">
-          <p>{currentQuestion.question}</p>
+          <p>{currentQuestion?.question}</p>
           {/* <img src={quizImg} /> */}
         </div>
       </div>
       <div className="right-container">
         <h2>Answers</h2>
         <form>
-          {currentQuestion.answers.map((answer, index) => (
+          {currentQuestion?.options.map((answer, index) => (
             <label key={index} className="answer-label">
               <input
                 type="radio"
                 value={answer.content}
                 checked={
-                  selectedAnswers[currentQuestionIndex] === answer.content
+                  quizStatus.selectedAnswers[quizStatus.currentQuestionIndex] === answer.content
                 }
                 onChange={() =>
-                  handleAnswerSelection(answer.content, currentQuestionIndex)
+                  handleAnswerSelection(answer.content, quizStatus.currentQuestionIndex)
                 }
                 className="answer-radio"
               />
@@ -104,15 +135,15 @@ const Quiz = () => {
         <div className="buttons-container">
           <button
             onClick={handlePreviousQuestion}
-            disabled={currentQuestionIndex === 0}
+            disabled={quizStatus.currentQuestionIndex === 0}
           >
             Previous
           </button>
-          <button onClick={handleNextQuestion}>
-            {currentQuestionIndex === questions.length - 1
-              ? "Finish Quiz"
-              : "Next"}
-          </button>
+          
+            {quizStatus.currentQuestionIndex === questions.length - 1
+              ? <button onClick={handleFinished}>Finish Quiz</button>
+              : <button onClick={handleNextQuestion}>Next</button>}
+          
         </div>
       </div>
     </div>

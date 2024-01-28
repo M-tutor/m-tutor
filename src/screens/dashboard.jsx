@@ -11,7 +11,7 @@ export default function Dashboard() {
   const onDivClick = (divname) => {
     switch (divname) {
       case "Quizzes":
-        window.location.href = "/quizpage";
+        window.location.href = "/quiz";
         break;
       case "Tutorials":
         window.location.href = "https://www.youtube.com/@MoraMaths";

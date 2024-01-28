@@ -27,14 +27,8 @@ function App() {
         {/* {JSON.stringify(currentUser)} fs */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route
-            path="/quizpage"
-            element={<QuizPage />}
-          />
-          <Route
-            path="/quiz/Algebra/Geometry"
-            element={currentUser ? <Quiz /> : <Navigate to="/login" />}
-          />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz/:topic/:subTopic" element={<Quiz />} />
           <Route
             path="/dashboard"
             // element={user ? <Dashboard /> : <Navigate to="/login" />}

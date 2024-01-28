@@ -1,52 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Navbar from "../../components/navbar/navbar";
+import Navbar from "../../components/navbar/navbar";
 import QuizSubject from "../../components/quizsubject/quizsubject";
 import "./quizpage.css";
-import { firestore } from "../../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
-import Navbar from "../../components/navbar/navbar";
-import LoadingIcon from "../../components/loading/LoadingIcon";
+import quizService from "../../services/quizService";
+import LoadingIcon from "../../components/loading/LoadingIcon"
+
 function QuizPage() {
   const navigate = useNavigate();
-  const [tabData, setTabData] = useState([]);
-  let [loading, setLoading] = useState(false);
+  const [tabData, setTabData] = useState([]); 
+  const [isloading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchQuizData = async () => {
-      setLoading(true);
-      try {
-        const quizCollection = collection(firestore, "QUizDetails");
-        const querySnapshot = await getDocs(quizCollection);
-
-        const newTabData = querySnapshot.docs.map((doc) => ({
-          title: doc.data().lesson,
-          dropdownItems: doc.data().quizes,
-        }));
-
-        setTabData(newTabData);
-      } catch (error) {
-        console.error("Error fetching quiz data:", error);
-      }
-      setLoading(false);
+    const getTabData = async () => {
+      setIsLoading(true);
+      const data = await quizService.getQuizzes();
+      setTabData(data);
+      setIsLoading(false);
     };
-
-    fetchQuizData();
+    getTabData();
   }, []);
 
-  const handleTopic = (item, tabTitle) => {
-    console.log(item, tabTitle);
-    // navigate(`/quiz/${item}/${tabTitle}`);
-    navigate("/quizpage");
+
+  const handleTopic = (item, tabTitle, id) => {
+    console.log(id);
+    navigate(`/quiz/${tabTitle}/${item}?id=${id}`);
   };
   return (
     <>
       <div className="navbar">
         <Navbar />
       </div>
-     { loading && <LoadingIcon />}
+      {isloading && <LoadingIcon/> }
       <div className="container">
+
         <div className="h1">Quizzes</div>
+
         {tabData.map((tab, index) => (
           <QuizSubject
             tabIndex={index}
@@ -54,6 +43,7 @@ function QuizPage() {
             dropdownItems={tab.dropdownItems}
             handleTopic={handleTopic}
           />
+
         ))}
       </div>
     </>

@@ -31,10 +31,10 @@ const HorizontalTabWithDropdown = ({
             {dropdownItems.map((item, index) => (
               <li
                 className="list-item"
-                key={index}
-                onClick={() => handleTopic(item, tabTitle)}
+                key={item.subtitle + index}
+                onClick={() => handleTopic(item.subtitle, tabTitle, item.id)}
               >
-                <div className="list-text">{item}</div>
+                <div className="list-text">{item.subtitle}</div>
               </li>
             ))}
           </ul>

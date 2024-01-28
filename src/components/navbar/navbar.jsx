@@ -46,6 +46,10 @@ const Navbar = () => {
         } catch (error) {
           console.error("Error logging out:", error.message);
         }
+        finally {
+          // clear local storage
+            localStorage.clear();
+        }
       };
 
       const onLogoClicked = () =>{
