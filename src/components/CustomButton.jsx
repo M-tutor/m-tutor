@@ -1,10 +1,11 @@
 import React from "react";
 
-function CustomButton({ onClick, className, children }) {
+function CustomButton({ onClick, className, children, type} ) {
   return (
     <div className="w-3/5">
+      
       <button
-        type="submit"
+        type= {type? "submit" : "button"}
         onClick={onClick}
         className={`${className} bg-btnC p-3 rounded-md text-dark font-semibold flex justify-center w-full`}
       >

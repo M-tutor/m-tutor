@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import VolunteerImage from "../assets/volunteers-images/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes-removebg-preview 1.png";
 import UnderConstructionImage from '../assets/under-construction-2891888_1280.webp';
 import { BorderStyle } from "@mui/icons-material";
+import Navbar from "../components/navbar/navbar";
 
 export default function Dashboard() {
   const onDivClick = (divname) => {
@@ -27,7 +28,7 @@ export default function Dashboard() {
   };
   return (
     <div className="Dashboard">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="volunteer">
         <div className="volunteer-image">
           <img
