@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 // import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
 import { BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
@@ -17,36 +17,21 @@ import { auth } from "./config/firebase";
 import { useEffect , useState , useNavigate , useLocation} from "react";
 import About from "./screens/About/About";
 import HomePage from "./screens/homepage";
-
-
+import { AuthContext } from "./contextStore/AuthProvider";
 
 function App() {
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-
-    return () => unsubscribe();
-  });
+  const {currentUser} = useContext(AuthContext);
 
   return (
     <div>
       <BrowserRouter>
-        {/* {window.location.href === '/login' && <Navbar />} */}
-        {JSON.stringify(user)}
+        {/* {JSON.stringify(currentUser)}
         {window.location.pathname}
-        {user && window.location.pathname !== '/' && window.location.pathname !== '/login' && window.location.pathname !== '/signup' && window.location.pathname !== '/about' && <Navbar />}
-        {!user && (window.location.pathname === '/dashboard' || window.location.pathname === '/quizpage') && <Navbar />}
+        {currentUser && window.location.pathname !== '/' && window.location.pathname !== '/login' && window.location.pathname !== '/signup' && window.location.pathname !== '/about' && <Navbar />}
+        {!currentUser && (window.location.pathname === '/dashboard' || window.location.pathname === '/quizpage') && <Navbar />} */}
         <Routes>
-          {/* <Route path="/quizpage" element={<QuizPage />} />
-          <Route path="/quiz/Algebra/Geometry" element={<Quiz />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LoggingScreen />} /> */}
-          {/* <Route path="/" element={<LoggingScreen />} /> */}
+
           <Route path="/" element={<HomePage />} />
           <Route
             path="/quizpage"
@@ -54,7 +39,7 @@ function App() {
           />
           <Route
             path="/quiz/Algebra/Geometry"
-            element={user ? <Quiz /> : <Navigate to="/login" />}
+            element={currentUser ? <Quiz /> : <Navigate to="/login" />}
           />
           <Route
             path="/dashboard"

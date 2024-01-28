@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect, useContext} from "react";
 import logo1 from "../../assets/Copy of Mora Maths- Vertical logo - White text.png";
 import logo2 from "../../assets/M-tutor - White logo.png";
 import googleLogo from "../../assets/Google__G__Logo.svg.png";
@@ -13,6 +13,7 @@ import { createUserDocument } from "../../services/userService";
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { useNavigate } from "react-router";
 
+import AuthProvider, { AuthContext } from "../../contextStore/AuthProvider";
 
 function MainComponents() {
   const [name, setName] = useState("");
@@ -29,6 +30,7 @@ function MainComponents() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
+  const {loggedUser, setLoggedUser} = useContext(AuthContext);
 
   async function signUp(){
     try{
@@ -38,6 +40,7 @@ function MainComponents() {
       }
         const {user} = await createUserWithEmailAndPassword(auth, email, password1);
         await createUserDocument(user, {name, school, address, district, dob, contactnum, year});
+        setLoggedUser(user);
         navigate('/dashboard');
     } catch(error){
         console.log(error);
@@ -49,6 +52,7 @@ function MainComponents() {
         let {user} = await signInWithPopup(auth, googleProvider);
 
         await createUserDocument(user, {name:user?.displayName, school, address, district, dob, contactnum, year});
+        setLoggedUser(user);
         navigate('/dashboard');
     } catch(error){
         console.log(error);

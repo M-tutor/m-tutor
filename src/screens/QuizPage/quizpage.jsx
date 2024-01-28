@@ -5,6 +5,7 @@ import QuizSubject from "../../components/quizsubject/quizsubject";
 import "./quizpage.css";
 import {firestore} from "../../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Navbar from "../../components/navbar/navbar";
 
 function QuizPage() {
   const navigate = useNavigate();
@@ -38,9 +39,9 @@ function QuizPage() {
   };
   return (
     <>
-      {/* <div className="navbar">
+      <div className="navbar">
         <Navbar />
-      </div> */}
+      </div>
 
       <div className="container">
         <div className="h1">Quizzes</div>
