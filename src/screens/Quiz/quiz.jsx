@@ -3,6 +3,7 @@ import { Navigate, useLocation, useParams } from "react-router-dom";
 import "./quiz.css";
 import { AuthContext } from "../../contextStore/AuthProvider";
 import quizService from "../../services/quizService";
+import Navbar from "../../components/navbar/navbar";
 
 const Quiz = () => {
   const { subTopic, topic } = useParams();
@@ -35,7 +36,7 @@ const Quiz = () => {
       const data = await quizService.getQuestionsforQuizID(id);
       setQuestions(data);
       setIsLoading(false);
-      console.log(data)
+      console.log(data);
     };
     getQuestions();
   }, [id]);
@@ -80,73 +81,83 @@ const Quiz = () => {
   };
 
   const handleFinished = () => {
-
-    const correctAnswers = questions.map((question) => question.options[question.answer].content);
+    const correctAnswers = questions.map(
+      (question) => question.options[question.answer].content
+    );
     const score = quizStatus.selectedAnswers.filter(
       (answer, index) => answer === correctAnswers[index]
     ).length;
     alert(`Your score is ${score} out of ${questions.length}`);
-  }
+  };
 
   return (
-    <div className="quiz-container">
-      <div className="left-container">
-        {isloading && <h1>Loading...</h1>}
-        <div className="upper-tab">
-          {/* <img src={logo} /> */}
-          <h3>{`${topic} > ${subTopic}> ${quizStatus.currentQuestionIndex + 1} of ${
-            questions?.length
-          }`}</h3>
+    <>
+      <Navbar />
+      <div className="quiz-container">
+        <div className="left-container">
+          {isloading && <h1>Loading...</h1>}
+          <div className="upper-tab">
+            {/* <img src={logo} /> */}
+            <h3>{`${topic} > ${subTopic}> ${
+              quizStatus.currentQuestionIndex + 1
+            } of ${questions?.length}`}</h3>
+          </div>
+          <h2>Question {quizStatus.currentQuestionIndex + 1}</h2>
+          <div className="question-container">
+            <p>{currentQuestion?.question}</p>
+            {/* <img src={quizImg} /> */}
+          </div>
         </div>
-        <h2>Question {quizStatus.currentQuestionIndex + 1}</h2>
-        <div className="question-container">
-          <p>{currentQuestion?.question}</p>
-          {/* <img src={quizImg} /> */}
-        </div>
-      </div>
-      <div className="right-container">
-        <h2>Answers</h2>
-        <form>
-          {currentQuestion?.options.map((answer, index) => (
-            <label key={index} className="answer-label">
-              <input
-                type="radio"
-                value={answer.content}
-                checked={
-                  quizStatus.selectedAnswers[quizStatus.currentQuestionIndex] === answer.content
-                }
-                onChange={() =>
-                  handleAnswerSelection(answer.content, quizStatus.currentQuestionIndex)
-                }
-                className="answer-radio"
-              />
-              {answer.type === "text" ? (
-                answer.content
-              ) : (
-                <img
-                  className="answer-img"
-                  src={answer.content}
-                  alt={`Image ${index}`}
+        <div className="right-container">
+          <h2>Answers</h2>
+          <form>
+            {currentQuestion?.options.map((answer, index) => (
+              <label key={index} className="answer-label">
+                <input
+                  type="radio"
+                  value={answer.content}
+                  checked={
+                    quizStatus.selectedAnswers[
+                      quizStatus.currentQuestionIndex
+                    ] === answer.content
+                  }
+                  onChange={() =>
+                    handleAnswerSelection(
+                      answer.content,
+                      quizStatus.currentQuestionIndex
+                    )
+                  }
+                  className="answer-radio"
                 />
-              )}
-            </label>
-          ))}
-        </form>
-        <div className="buttons-container">
-          <button
-            onClick={handlePreviousQuestion}
-            disabled={quizStatus.currentQuestionIndex === 0}
-          >
-            Previous
-          </button>
-          
-            {quizStatus.currentQuestionIndex === questions.length - 1
-              ? <button onClick={handleFinished}>Finish Quiz</button>
-              : <button onClick={handleNextQuestion}>Next</button>}
-          
+                {answer.type === "text" ? (
+                  answer.content
+                ) : (
+                  <img
+                    className="answer-img"
+                    src={answer.content}
+                    alt={`Image ${index}`}
+                  />
+                )}
+              </label>
+            ))}
+          </form>
+          <div className="buttons-container">
+            <button
+              onClick={handlePreviousQuestion}
+              disabled={quizStatus.currentQuestionIndex === 0}
+            >
+              Previous
+            </button>
+
+            {quizStatus.currentQuestionIndex === questions.length - 1 ? (
+              <button onClick={handleFinished}>Finish Quiz</button>
+            ) : (
+              <button onClick={handleNextQuestion}>Next</button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
