@@ -10,9 +10,7 @@ import Quiz from "./screens/Quiz/quiz";
 import QuizPage from "./screens/QuizPage/quizpage";
 import LoggingScreen from "./screens/LoggingScreen";
 import SignUp from "./screens/sign_up_screen/signup_screen";
-// import Quiz from "./screens/QuizPage/quizpage";
-//import Home from "./screens/home";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import { auth } from "./config/firebase";
 import { useEffect , useState , useNavigate , useLocation} from "react";
 import About from "./screens/About/About";
@@ -26,12 +24,8 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        {/* {JSON.stringify(currentUser)}
-        {window.location.pathname}
-        {currentUser && window.location.pathname !== '/' && window.location.pathname !== '/login' && window.location.pathname !== '/signup' && window.location.pathname !== '/about' && <Navbar />}
-        {!currentUser && (window.location.pathname === '/dashboard' || window.location.pathname === '/quizpage') && <Navbar />} */}
+        {/* {JSON.stringify(currentUser)} fs */}
         <Routes>
-
           <Route path="/" element={<HomePage />} />
           <Route
             path="/quizpage"
